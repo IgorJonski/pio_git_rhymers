@@ -5,7 +5,7 @@ public class DefaultCountingOutRhymer {
     public static final int SIZE = -1;
     public static final int MAX_SIZE = 12;
 
-    private int[] numbers = new int[MAX_SIZE];
+    final private int[] numbers = new int[MAX_SIZE];
     public int total = SIZE;
 
     public void countIn(int in) {
