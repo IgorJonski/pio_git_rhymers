@@ -19,12 +19,12 @@ public class RhymersJUnitTest {
     public void testCallCheck() {
         DefaultCountingOutRhymer rhymer = new DefaultCountingOutRhymer();
         boolean result = rhymer.callCheck();
-        Assert.assertEquals(true, result);
+        Assert.assertTrue(result);
 
         rhymer.countIn(888);
 
         result = rhymer.callCheck();
-        Assert.assertEquals(false, result);
+        Assert.assertFalse(result);
     }
 
     @Test
@@ -33,12 +33,12 @@ public class RhymersJUnitTest {
         final int STACK_CAPACITY = 12;
         for (int i = 0; i < STACK_CAPACITY; i++) {
             boolean result = rhymer.isFull();
-            Assert.assertEquals(false, result);
+            Assert.assertFalse(result);
             rhymer.countIn(888);
         }
 
         boolean result = rhymer.isFull();
-        Assert.assertEquals(true, result);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -75,4 +75,29 @@ public class RhymersJUnitTest {
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
     }
 
+    @Test
+    public void testReportRejected() {
+        HanoiRhymer hanoiRhymer = new HanoiRhymer();
+        final int EXPECTED_RESULT = 2;
+
+        hanoiRhymer.countIn(5);
+        hanoiRhymer.countIn(10);
+        hanoiRhymer.countIn(7);
+
+        int result = hanoiRhymer.reportRejected();
+        Assert.assertEquals(result, EXPECTED_RESULT);
+    }
+
+    @Test
+    public void testHanoiRhymerCountIn() {
+        HanoiRhymer hanoiRhymer = new HanoiRhymer();
+        final int EXPECTED_TOTAL = 4;
+
+        for (int i = 5; i > 0; i--) {
+            hanoiRhymer.countIn(i);
+        }
+
+        int result = hanoiRhymer.getTotal();
+        Assert.assertEquals(EXPECTED_TOTAL, result);
+    }
 }
