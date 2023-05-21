@@ -1,5 +1,6 @@
 package edu.kis.vh.nursery.list;
 
+// TODO: klasa IntLinkedList i niektóre z jej metod nie są nigdy używane
 public class IntLinkedList {
 
     private static final int DEFAULT = -1;
@@ -20,6 +21,7 @@ public class IntLinkedList {
         return last == null;
     }
 
+    // TODO: isFull() nie powinna zawsze zwracać false
     public boolean isFull() {
         return false;
     }
